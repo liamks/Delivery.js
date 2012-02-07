@@ -18,7 +18,7 @@ var io  = require('socket.io').listen(5001),
     fs  = require('fs');
 
 io.sockets.on('connection', function(socket){
-  delivery = dl.listen(socket);
+  var delivery = dl.listen(socket);
   delivery.on('receive.success',function(file){
 
     fs.writeFile(file.name,file.buffer, function(err){
@@ -136,6 +136,7 @@ delivery.send({
 
 #### 'delivery.connect'
 delivery.connect is called when a client connects to the server.
+
 ```javascript
 delivery.on('delivery.connect',function(delivery){
   ...
@@ -144,6 +145,7 @@ delivery.on('delivery.connect',function(delivery){
 
 #### 'receive.start'
 receive.start is called when the server starts receiving a file. The callback function takes a filePackage object that describes the file being sent.
+
 ```javascript
 delivery.on('receive.start',function(filePackage){
   console.log(filePackage.name);
@@ -151,6 +153,7 @@ delivery.on('receive.start',function(filePackage){
 ```
 #### 'receive.success'
 receive.success is called once the file has been successfully reveived by the server. The callback function takes a filePackage.
+
 ```javascript
 delivery.on('receive.success',function(file){
     fs.writeFile(file.name,file.buffer, function(err){
@@ -164,6 +167,7 @@ delivery.on('receive.success',function(file){
 ```
 #### 'file.load'
 file.load is called after .send() is called and immediately after the file is loaded. The callback function takes a filePackage.
+
 ```javascript
 delivery.on('file.load',function(filePackage){
   console.log(filePackage.name + " has just been loaded.");
@@ -171,6 +175,7 @@ delivery.on('file.load',function(filePackage){
 ```
 #### 'send.start'
 send.start is called after .send() is called and immediately after the file begins being sent to the client. The callback function takes a filePackage.
+
 ```javascript
 delivery.on('send.start',function(filePackage){
   console.log(filePackage.name + " is being sent to the client.");
@@ -178,6 +183,7 @@ delivery.on('send.start',function(filePackage){
 ```
 #### 'send.success'
 send.success is called after .send() is called and once confirmation is received form the client that the the file sent was successfully received. The callback function takes the uid of the file that was sent.
+
 ```javascript
 delivery.on('send.success',function(uid){
   console.log("File successfully sent!");
@@ -185,7 +191,15 @@ delivery.on('send.success',function(uid){
 
 ### Client
 
+#### Include delivery.js in your html file
+
+```html
+<script src="/js/delivery.js"></script>
+```
+
 #### Events
+
+Client events mirror those on the server, see server events above for more details.
 
 ##License
 

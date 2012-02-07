@@ -7,6 +7,10 @@ Sending files to the server, and pushing files to the client should be as easy a
 
     npm install delivery -g
 
+## Browser JavaScript
+
+delivery.js can be found within lib/client.
+
 ## Examples
 
 ### Sending a File To a Server
@@ -188,7 +192,7 @@ send.success is called after .send() is called and once confirmation is received
 delivery.on('send.success',function(uid){
   console.log("File successfully sent!");
 });
-
+```
 ### Client
 
 #### Include delivery.js in your html file

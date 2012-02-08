@@ -1,7 +1,7 @@
 # Delivery.js (Experimental)
-## Asynchronous Bidirectional File Transfers For Node.js via Socket.IO
+## Bidirectional File Transfers For Node.js via Socket.IO
 
-Sending files to the server, and pushing files to the client should be as easy as possible. Delivery.js uses Socket.IO as a bidirectional transfer mechanism, making file transfers fast and easy. When Socket.IO uses WebSockets to connect to the server, only 2 bytes is added to each message sent, signficantly less than [~ 871 bytes](http://websocket.org/quantum.html) for a POST. If a file needs to be broken into chunks, a large header size adds a significant amount to the data being trasnfered, WebSockets do not incure such a penalty.
+Sending files to the server, and pushing files to the client should be as easy as possible. Delivery.js uses Node.js and Socket.IO to make it easy to push files to the client, or send them to the server. Files can be pushed to the client as text (utf8) or base64 (for images and binary files). 
 
 ## Install
 
@@ -202,13 +202,13 @@ delivery.on('send.success',function(uid){
 ```
 
 ### FilePackage
-FilePackage objects encapsulate files and include a text representation (utf8), or base64 representation of the file. They also include the file's meta data, including `name`, `size` and `mimeType`.
+FilePackage objects encapsulate files and includes a text representation (utf8), or base64 representation of the file. They also include the file's meta data, including `name`, `size` and `mimeType`.
 
 ```javascript
 filePackage.isImage()
 ```
 
-returns true if the file has a corresponding mime type that is an image. It is possible that this method could return false if your file is an image if it does not have a mimetype, or does not have a mimetype of image/gif, image/jpeg, image/png, image/svg+xml, image/tiff. Look for `var imageFilter` within delivery.js if you'd like to add additional mimetypes.
+returns true if the file has a corresponding mime type that is an image. It is possible that this method could return false if your file is an image, but does not have a mimetype, or does not have a mimetype of image/gif, image/jpeg, image/png, image/svg+xml, image/tiff. Look for `var imageFilter` within delivery.js if you'd like to add additional mimetypes.
 
 ```javascript
 filePackage.isText()
@@ -248,4 +248,9 @@ http://www.opensource.org/licenses/MIT
 
 
 ## Road Map
+
+1. Incorporating feedback from other developers!
+2. Breaking files into pieces to help transfer larger files.
+3. md5 hashing of file and confirmhing the hash when a file has been received.
+4. ?
 

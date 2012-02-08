@@ -1,10 +1,19 @@
 {
-	"author":"Liam Kaufman <liam.kaufman+delivery@gmail.com>",
+
 	"name":"delivery",
+	"description":"Bidirectional File Transfers For Node.js via Socket.IO",
+	"maintainers":[
+		{
+			"name":"Liam Kaufman",
+			"email":"liam.kaufman+delivery@gmail.com",
+			"web":"http://liamkaufman.com"
+		}
+	],
 	"version":"0.0.1",
-	"keywords":["file","transfer","socket.io","websockets"],
+	"keywords":["file","transfer","push","socket.io","websockets"],
 	"repository":{
-		"url":""	
+		"type":"git",
+		"url":"https://liamks@github.com/liamks/Delivery.js.git"	
 	},
 	"engines":{
 		"node":"~0.6.6"

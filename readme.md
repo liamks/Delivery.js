@@ -251,6 +251,6 @@ http://www.opensource.org/licenses/MIT
 
 1. Incorporating feedback from other developers!
 2. Breaking files into pieces to help transfer larger files.
-3. md5 hashing of file and confirmhing the hash when a file has been received.
+3. md5 hash file and confirm the hash when a file has been received.
 4. ?
 

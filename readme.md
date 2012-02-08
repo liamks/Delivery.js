@@ -136,6 +136,13 @@ delivery.send({
 });
 ```
 
+```javascript
+delivery.sendAsText({
+  name: 'fileName.txt',
+  path: 'path/to/file/fileName.txt'
+});
+```
+
 ### Server Events
 
 #### 'delivery.connect'
@@ -193,6 +200,34 @@ delivery.on('send.success',function(uid){
   console.log("File successfully sent!");
 });
 ```
+
+### FilePackage
+FilePackage objects encapsulate files and include a text representation (utf8), or base64 representation of the file. They also include the file's meta data, including `name`, `size` and `mimeType`.
+
+```javascript
+filePackage.isImage()
+```
+
+returns true if the file has a corresponding mime type that is an image. It is possible that this method could return false if your file is an image if it does not have a mimetype, or does not have a mimetype of image/gif, image/jpeg, image/png, image/svg+xml, image/tiff. Look for `var imageFilter` within delivery.js if you'd like to add additional mimetypes.
+
+```javascript
+filePackage.isText()
+```
+
+returns true if the server used `sendAsText()`.
+
+```javascript
+filePackage.text()
+```
+
+returns the text representation of the file sent. If the file has been base64 encoded it returns the base64 encoded version of the file.
+
+```javascript
+filePackage.dataURL()
+```
+
+returns the base64 representation of the file prefixed with the data and mimetype necessary to display an image within `<img src=''>`.
+
 ### Client
 
 #### Include delivery.js in your html file

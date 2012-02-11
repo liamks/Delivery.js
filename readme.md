@@ -63,8 +63,7 @@ $(function(){
 ### Server-side code
 ```javascript
 var io  = require('socket.io').listen(5001),
-    dl  = require('delivery'),
-    fs  = require('fs');
+    dl  = require('delivery');
 
 io.sockets.on('connection', function(socket){
   var delivery = dl.listen(socket);
@@ -91,7 +90,7 @@ $(function(){
   socket.on('connect', function(){
     var delivery = new Delivery(socket);
 
-    delivery.on('receive.start',function(delivery){
+    delivery.on('receive.start',function(fileUID){
       console.log('receiving a file!');
     });
 

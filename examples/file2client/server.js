@@ -1,6 +1,5 @@
 var io  = require('socket.io').listen(5001),
-    dl = require('../../lib/delivery.server'),
-    fs  = require('fs');
+    dl = require('../../lib/delivery.server');
 
 io.sockets.on('connection', function(socket){
   var delivery = dl.listen(socket);

@@ -4,7 +4,7 @@ $(function(){
   socket.on('connect', function(){
     var delivery = new Delivery(socket);
 
-    delivery.on('receive.start',function(delivery){
+    delivery.on('receive.start',function(fileUID){
       console.log('receiving a file!');
     });
 

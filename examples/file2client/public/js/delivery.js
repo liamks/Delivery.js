@@ -1,1 +1,0 @@
-../../../../lib/client/delivery.js

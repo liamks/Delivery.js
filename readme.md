@@ -13,7 +13,7 @@ delivery.js can be found within lib/client.
 
 ## Examples
 
-### Sending a File To a Server
+### Sending a File To a Server (Client is a browser)
 
 #### Server-side code
 ```javascript
@@ -58,7 +58,7 @@ $(function(){
 });
 ```
 
-### Pushing a File to a Client
+### Pushing a File to a Client (Client is a browser)
 
 ### Server-side code
 ```javascript
@@ -100,6 +100,48 @@ $(function(){
       };
     });
   });
+});
+```
+
+### Transfer files between two servers
+
+### Receive file
+```javascript
+io.sockets.on('connection', function(socket){
+  
+  var delivery = dl.listen(socket);
+  delivery.on('receive.success',function(file){
+		
+    fs.writeFile(file.name, file.buffer, function(err){
+      if(err){
+        console.log('File could not be saved: ' + err);
+      }else{
+        console.log('File ' + file.name + " saved");
+      };
+    });
+  });	
+});
+```
+
+### Send file
+```javascript
+socket.on( 'connect', function() {
+  log( "Sockets connected" );
+		
+  delivery = dl.listen( socket );
+  delivery.connect();
+	
+  delivery.on('delivery.connect',function(delivery){
+    delivery.send({
+      name: 'sample-image.jpg',
+      path : './sample-image.jpg'
+    });
+
+    delivery.on('send.success',function(file){
+      console.log('File sent successfully!');
+    });
+  });
+	
 });
 ```
 

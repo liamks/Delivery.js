@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/liamks/Delivery.js.png)](http://travis-ci.org/liamks/Delivery.js)
 # Delivery.js (Experimental)
 ## Bidirectional File Transfers For Node.js via Socket.IO
 

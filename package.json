@@ -1,13 +1,13 @@
 {
-	"name":"delivery",
-	"description":"Bidirectional File Transfers For Node.js via Socket.IO",
+	"name":"delivery-wks",
+	"description":"Bidirectional File Transfers For Node.js via Socket.IO - temporary publish, waiting on pull request",
 	"author":
 		{
 			"name":"Liam Kaufman",
 			"email":"liam.kaufman@gmail.com",
 			"web":"http://liamkaufman.com"
 		},
-	"version":"0.0.2",
+	"version":"0.0.3",
 	"keywords":["file","transfer","push","socket.io","websockets"],
 	"repository":{
 		"type":"git",

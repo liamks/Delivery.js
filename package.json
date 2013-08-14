@@ -1,6 +1,6 @@
 {
-	"name":"delivery-wks",
-	"description":"Bidirectional File Transfers For Node.js via Socket.IO - temporary publish, waiting on pull request",
+	"name":"delivery",
+	"description":"Bidirectional File Transfers For Node.js via Socket.IO",
 	"author":
 		{
 			"name":"Liam Kaufman",

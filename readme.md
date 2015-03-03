@@ -24,7 +24,7 @@ var io  = require('socket.io').listen(5001),
 io.sockets.on('connection', function(socket){
   var delivery = dl.listen(socket);
   delivery.on('receive.success',function(file){
-
+    var params = file.params;
     fs.writeFile(file.name,file.buffer, function(err){
       if(err){
         console.log('File could not be saved.');
@@ -46,7 +46,8 @@ $(function(){
     delivery.on('delivery.connect',function(delivery){
       $("input[type=submit]").click(function(evt){
         var file = $("input[type=file]")[0].files[0];
-        delivery.send(file);
+        var extraParams = {foo: 'bar'};
+        delivery.send(file, extraParams);
         evt.preventDefault();
       });
     });
@@ -71,7 +72,8 @@ io.sockets.on('connection', function(socket){
 
     delivery.send({
       name: 'sample-image.jpg',
-      path : './sample-image.jpg'
+      path : './sample-image.jpg',
+      params: {foo: 'bar'}
     });
 
     delivery.on('send.success',function(file){
@@ -95,6 +97,7 @@ $(function(){
     });
 
     delivery.on('receive.success',function(file){
+      var params = file.params;
       if (file.isImage()) {
         $('img').attr('src', file.dataURL());
       };

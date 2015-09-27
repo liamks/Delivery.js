@@ -7,7 +7,7 @@
 			"email":"priyankjlns@gmail.com",
 			"web":"http://wget.io/~priyank"
 		},
-	"version":"1.0.0",
+	"version":"1.0.1",
 	"keywords":["file","transfer","push","socket.io","websockets"],
 	"repository":{
 		"type":"git",

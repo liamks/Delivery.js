@@ -7,7 +7,7 @@
 			"email":"liam.kaufman@gmail.com",
 			"web":"http://liamkaufman.com"
 		},
-	"version":"0.0.4",
+	"version":"0.0.5",
 	"keywords":["file","transfer","push","socket.io","websockets"],
 	"repository":{
 		"type":"git",
